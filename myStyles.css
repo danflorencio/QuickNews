@@ -25,4 +25,6 @@ a {
 img {
   width: 400px;
   height: auto;
+  margin-top: 5px;
+  margin-bottom: 15px;
 }
