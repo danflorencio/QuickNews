@@ -29,7 +29,7 @@ console.log("popup.js");
 window.onload = function() {
   console.log("window.onload");
 
-  $.get("https://newsapi.org/v1/articles?source=the-washington-post&sortBy=top&apiKey=", function(newsy){
+  $.get("https://newsapi.org/v1/articles?source=the-washington-post&sortBy=top&apiKey=87985eb53a484a09993e99061cc35b03", function(newsy){
     var br = document.createElement('br');
     var centr = document.createElement('center');
     for (var i = 0; i < newsy.articles.length; i++) {
@@ -53,12 +53,13 @@ window.onload = function() {
   });
 }
 
-$(document).ready(function(){
-   $('body').on('click', 'a', function(){
-     chrome.tabs.create({url: $(this).attr('href')});
-     return false;
-   });
-});
+window.addEventListener('click',function(e){
+  if(e.target.href!==undefined){
+    chrome.tabs.create({url:e.target.href})
+  }
+})
+
+
 /*
 $(document).ready(function(){
   $.get("https://newsapi.org/v1/articles?source=techcrunch&apiKey=87985eb53a484a09993e99061cc35b03", function(data){
