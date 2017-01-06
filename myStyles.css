@@ -19,7 +19,7 @@ a {
   text-align: center;
   color: White;
   font-family: "Courier New", Courier, "Lucinda Sans Typewriter",
-               "Lucinda Typewriter" monospace;
+               "Lucinda Typewriter", monospace;
   font-size: 250%;
   text-decoration: none;
 }
