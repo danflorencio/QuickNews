@@ -1,36 +1,19 @@
-/**
- * Create a timer for the active tab.
- *
- */
 /*
-function startTimer() {
-  // Create a new timer for the url the user is on
-  var myTimer = new chrome.Interval();
-  document.getElementById('status').textContent = "Awesome";
-}
-
-chrome.browserAction.onClicked.addListener(function(tab) {
-
-})
-
-chrome.runtime.onInstalled.addListener(function(details){
-
-})
-
-chrome.runtime.onStartup.addListener(function(details){
-
-})*/
+ * popup.js is executed when the popup.html is clicked on. The api used to
+ * grab trending headlines and put them into a conveinient JSON format is
+ * provided by newsapi.org, and the news outlet choice is The Washington Post.
+ */
 
 var theNewScript = document.createElement("script");
 theNewScript.type = "text/javascript";
 theNewScript.src = "jquery.js";
-console.log("popup.js");
 
 window.onload = function() {
+  // Debug
   console.log("window.onload");
 
   // Grab the metadata and put it into JSON
-  $.get("https://newsapi.org/v1/articles?source=the-washington-post&sortBy=top&apiKey=", function(newsy){
+  $.get("https://newsapi.org/v1/articles?source=the-washington-post&sortBy=top&apiKey=87985eb53a484a09993e99061cc35b03", function(newsy) {
 
     // Begin building popup.html
     for (var i = 0; i < newsy.articles.length; i++) {
@@ -44,6 +27,7 @@ window.onload = function() {
       newImg.src = newsy.articles[i].urlToImage;
       newImg.title = newsy.articles[i].description;
 
+      // Now append to the HTML body
       document.body.appendChild(link);
       document.body.appendChild(newImg);
     }
@@ -57,9 +41,9 @@ window.onload = function() {
 }
 
 // Make those links in popup.html clickable so that a user can open them in
-// a new link
-window.addEventListener('click',function(e){
-  if(e.target.href!==undefined){
+// a new tab
+window.addEventListener('click', function(e){
+  if(e.target.href !== undefined){
     chrome.tabs.create({url:e.target.href})
   }
 })
