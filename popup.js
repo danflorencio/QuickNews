@@ -13,7 +13,7 @@ window.onload = function() {
   console.log("window.onload");
 
   // Grab the metadata and put it into JSON
-  $.get("https://newsapi.org/v1/articles?source=the-washington-post&sortBy=top&apiKey=87985eb53a484a09993e99061cc35b03", function(newsy) {
+  $.get("https://newsapi.org/v1/articles?source=the-washington-post&sortBy=top&apiKey=insertKeyHere", function(newsy) {
 
     // Begin building popup.html
     for (var i = 0; i < newsy.articles.length; i++) {
